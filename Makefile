@@ -1,12 +1,21 @@
-default: testAll
+default: test-parse
 
 TEST_COVERAGE_THRESHOLD := 100
+FUZZ_TIME := 10
+NUM_PROCESSORS := $(shell nproc)
 
-testAll:
-	go test -race github.com/aabishkaryal/DSA/problems -json -cover | tparse -smallscreen
+test-parse:
+	go test -race github.com/aabishkaryal/DSA/problems -failfast -json -cover | tparse -smallscreen
 
-test:
-	go test -race github.com/aabishkaryal/DSA/problems -failfast -run Test$(FUNC)
+test-ci:
+	go test -race -v github.com/aabishkaryal/DSA/problems -failfast
+
+test-func:
+	@test -n "$(FUNC)" || (echo "FUNC env var required" && exit 1)
+	go test -race github.com/aabishkaryal/DSA/problems -failfast -run Test$(FUNC) 
+	go test -race github.com/aabishkaryal/DSA/problems -failfast -run Fuzz$(FUNC) -fuzz=Fuzz -fuzztime $(FUZZ_TIME)s -parallel $$((${NUM_PROCESSORS} / 2))
+
+test-deploy: lint test-parse coverage
 
 clean:
 	go clean -testcache

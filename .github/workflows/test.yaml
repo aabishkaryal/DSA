@@ -20,6 +20,6 @@ jobs:
                       ~/go/pkg/mod
                   key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
             - name: Test
-              run: make test
+              run: make test-ci
             - name: Coverage
               run: make coverage
