@@ -1,14 +1,19 @@
 ---
 name: DSA Problem request
 about: Suggest a DSA problem for this project
-title: '[DSA]: '
+title: "[DSA]: "
 labels: dsa_problem
 assignees: aabishkaryal
-
 ---
 
-**Link to DSA Problem**
+### Link to DSA Problem
+
 Add any other context or screenshots about the feature request here.
 
-**Problem Description**
+### Problem Description
+
 Describe the DSA Problem here.
+
+### Additional context
+
+Add any other context about the problem here.

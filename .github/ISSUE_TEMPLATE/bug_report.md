@@ -1,27 +1,32 @@
 ---
 name: Bug report
 about: Create a report to help us improve
-title: '[BUG]: '
+title: "[BUG]: "
 labels: bug
 assignees: aabishkaryal
-
 ---
 
-**Describe the bug**
+### Describe the bug
+
 A clear and concise description of what the bug is.
 
-**To Reproduce**
+### To Reproduce
+
 Steps to reproduce the behavior:
+
 1. Go to '...'
 2. Click on '....'
 3. Scroll down to '....'
 4. See error
 
-**Actual behavior**
+### Actual behavior
+
 A clear and concise description of what happens at the moment.
 
-**Expected behavior**
+### Expected behavior
+
 A clear and concise description of what you expected to happen.
 
-**Additional context**
+### Additional context
+
 Add any other context about the problem here.
