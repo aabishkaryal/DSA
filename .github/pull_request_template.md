@@ -9,7 +9,7 @@ Write why are you doing this. Relevant motivation and context.
 -   [ ] Git branch has been rebased with `main`
 -   [ ] Commits have been properly set-up
 -   [ ] Linters pass
--   [ ] tests pass
+-   [ ] Tests pass
 
 ### Optional
 
