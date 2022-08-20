@@ -12,14 +12,8 @@ jobs:
               uses: actions/setup-go@v3.2.1
               with:
                   go-version-file: "./go.mod"
-            - name: Cache tools
-              uses: actions/cache@v3
+            - name: Install linter-ci
+              uses: golangci/golangci-lint-action@v3
               with:
-                  path: |
-                      ~/go/bin
-                      ~/go/pkg/mod
-                  key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
-            - name: Download  tools
-              run: make install-tools
-            - name: Lint
-              run: make lint
+                  golangci-lint-version: "v1.31.0"
+                  golangci-lint-yaml: "./golangci-lint.yml"
