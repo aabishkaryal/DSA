@@ -2,11 +2,20 @@ package problems
 
 func Rotate(nums []int, k int) {
 	n := len(nums)
-	store := nums[0]
-	for i := 0; i < k; i++ {
-		for j := 1; j < n; j++ {
+	numLoops := GCD(n, k)
+	for i := 0; i < numLoops; i++ {
+		store, j := nums[i], (i+k)%n
+		for j != i {
 			nums[j], store = store, nums[j]
+			j = (j + k) % n
 		}
-		nums[0] = store
+		nums[i] = store
 	}
+}
+
+func GCD(a, b int) int {
+	if b == 0 {
+		return a
+	}
+	return GCD(b, a%b)
 }
