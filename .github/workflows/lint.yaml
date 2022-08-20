@@ -2,20 +2,20 @@ name: Code Lint
 on: [push, pull_request]
 
 jobs:
-    lint:
-        name: Lint
-        runs-on: ubuntu-20.04
-        steps:
-            - name: Checkout code
-              uses: actions/checkout@v3
-            - name: Setup Go
-              uses: actions/setup-go@v3.2.1
-              with:
-                  go-version-file: "./go.mod"
-            - name: Install linter-ci
-              uses: golangci/golangci-lint-action@v3
-              with:
-                  golangci-lint-version: "v1.31.0"
-                  golangci-lint-yaml: "./golangci-lint.yml"
-            - name: Cleanup go.mod file
-	            run: go mod tidy -v && git --no-pager diff --quiet go.mod
+  lint:
+    name: Lint
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Setup Go
+        uses: actions/setup-go@v3.2.1
+        with:
+          go-version-file: "./go.mod"
+      - name: Install linter-ci
+        uses: golangci/golangci-lint-action@v3
+        with:
+          golangci-lint-version: "v1.31.0"
+          golangci-lint-yaml: "./golangci-lint.yml"
+      - name: Cleanup go mod file
+        run: go mod tidy -v && git --no-pager diff --quiet go.mod
