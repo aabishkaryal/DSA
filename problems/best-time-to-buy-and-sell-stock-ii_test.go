@@ -3,6 +3,8 @@ package problems_test
 import (
 	"testing"
 
+	"github.com/stretchr/testify/require"
+
 	"github.com/aabishkaryal/DSA/problems"
 )
 
@@ -25,7 +27,7 @@ func TestMaxProfit(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := problems.MaxProfit(tt.args.prices); got != tt.want {
-				t.Errorf("maxProfit() = %v, want %v", got, tt.want)
+				require.Equal(t, tt.want, got)
 			}
 		})
 	}
