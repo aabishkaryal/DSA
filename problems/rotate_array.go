@@ -2,20 +2,16 @@ package problems
 
 func Rotate(nums []int, k int) {
 	n := len(nums)
-	numLoops := GCD(n, k)
-	for i := 0; i < numLoops; i++ {
-		store, j := nums[i], (i+k)%n
-		for j != i {
-			nums[j], store = store, nums[j]
-			j = (j + k) % n
-		}
-		nums[i] = store
-	}
+	k %= n
+	reverse(nums, 0, n)
+	reverse(nums, 0, k)
+	reverse(nums, k, n)
 }
 
-func GCD(a, b int) int {
-	if b == 0 {
-		return a
+// Reverse the array from start(inclusive) to end(exclusive).
+func reverse(arr []int, start, end int) {
+	mid := (start + end) / 2
+	for i := 0; i < (mid - start); i++ {
+		arr[start+i], arr[end-i-1] = arr[end-i-1], arr[start+i]
 	}
-	return GCD(b, a%b)
 }
