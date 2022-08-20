@@ -1,0 +1,165 @@
+# copies from https://github.com/istio/common-files/blob/master/files/common/config/.golangci.yml
+run:
+    # timeout for analysis, e.g. 30s, 5m, default is 1m
+    timeout: 5m
+
+linters:
+    disable-all: true
+    enable:
+        - deadcode
+        - errcheck
+        - gosimple
+        - govet
+        - gocritic
+        - goconst
+        - gofumpt
+        - goimports
+        - revive
+        - ineffassign
+        - lll
+        - misspell
+        - typecheck
+        - unparam
+        - varcheck
+        - godot
+        - nosnakecase
+        - testpackage
+        - unconvert
+    fast: false
+
+linters-settings:
+    errcheck:
+        # report about not checking of errors in type assetions: `a := b.(MyStruct)`;
+        # default is false: such cases aren't reported by default.
+        check-type-assertions: false
+
+        # report about assignment of errors to blank identifier: `num, _ := strconv.Atoi(numStr)`;
+        # default is false: such cases aren't reported by default.
+        check-blank: false
+
+        # To disable the errcheck built-in exclude list.
+        # See `-excludeonly` option in https://github.com/kisielk/errcheck#excluding-functions for details.
+        # Default: false
+        disable-default-exclusions: true
+
+    gosimple:
+        # https://staticcheck.io/docs/options#checks
+        # Default: ["*"]
+        checks: ["all"]
+
+    govet:
+        # Report about shadowed variables.
+        # Default: false
+        check-shadowing: true
+
+        # Enable all analyzers.
+        # Default: false
+        enable-all: true
+
+        # Settings per analyzer.
+        settings:
+            shadow:
+                # Whether to be strict about shadowing; can be noisy.
+                # Default: false
+                strict: true
+
+    goconst: # https://github.com/jgautheron/goconst
+        # Minimum occurrences of constant string count to trigger issue.
+        # Default: 3
+        min-occurrences: 2
+
+        # Minimal length of string constant.
+        # Default: 3
+        min-len: 2
+
+        # Search also for duplicated numbers.
+        # Default: false
+        numbers: true
+
+        # Ignore test files.
+        # Default: false
+        ignore-tests: true
+
+        # Ignore when constant is not used as function argument.
+        # Default: true
+        ignore-calls: false
+
+    gofumpt:
+        # Choose whether to use the extra rules.
+        # Default: false
+        extra-rules: true
+
+    goimports:
+        # put imports beginning with prefix after 3rd-party packages;
+        # it's a comma-separated list of prefixes
+        local-prefixes: github.com/aabishkaryal/DSA/
+
+    revive:
+        severity: error
+        confidence: 0.0
+        rules:
+            - name: dot-imports
+            - name: empty-block
+            - name: empty-lines
+            - name: error-return
+            - name: error-strings
+            - name: error-naming
+            - name: increment-decrement
+            - name: var-naming
+            - name: range
+            - name: receiver-naming
+            - name: superfluous-else
+            - name: unused-parameter
+            - name: unreachable-code
+            - name: redefines-builtin-id
+
+    lll:
+        # Max line length, lines longer will be reported.
+        # '\t' is counted as 1 character by default, and can be changed with the tab-width option.
+        # Default: 120.
+        line-length: 120
+
+        # Tab width in spaces.
+        # Default: 1
+        tab-width: 1
+
+    misspell:
+        # Correct spellings using locale preferences for US or UK.
+        # Default is to use a neutral variety of English.
+        # Setting locale to US will correct the British spelling of 'colour' to 'color'.
+        locale: US
+
+        # print struct with more effective memory layout or not, false by default
+        suggest-new: true
+
+    varcheck:
+        # Check usage of exported fields and variables.
+        # Default: false
+        exported-fields: true
+
+    godot:
+        # Comments to be checked: `declarations`, `toplevel`, or `all`.
+        # Default: declarations
+        scope: all
+
+        # Check that each sentence ends with a period.
+        # Default: true
+        period: true
+
+        # Check that each sentence starts with a capital letter.
+        # Default: false
+        capital: true
+
+issues:
+    exclude-rules:
+        # Exclude some linters from running on test files.
+        - path: _test\.go$|^tests/|^samples/|fixtures\.go$
+          linters:
+              - errcheck
+              - lll
+
+    # Maximum issues count per one linter. Set to 0 to disable. Default is 50.
+    max-per-linter: 0
+
+    # Maximum count of issues with the same text. Set to 0 to disable. Default is 3.
+    max-same-issues: 0
