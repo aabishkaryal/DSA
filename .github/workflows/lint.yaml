@@ -17,3 +17,5 @@ jobs:
               with:
                   golangci-lint-version: "v1.31.0"
                   golangci-lint-yaml: "./golangci-lint.yml"
+            - name: Cleanup go.mod file
+	            run: go mod tidy -v && git --no-pager diff --quiet go.mod
