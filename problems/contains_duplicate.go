@@ -1,13 +1,16 @@
 package problems
 
+import "sort"
+
 func ContainsDuplicate(nums []int) bool {
-	cache := make(map[int]int)
-	for _, num := range nums {
-		_, ok := cache[num]
-		if ok {
+	if len(nums) < 2 {
+		return false
+	}
+	sort.Ints(nums)
+	for i := range nums[1:] {
+		if nums[i] == nums[i+1] {
 			return true
 		}
-		cache[num] = 1
 	}
 	return false
 }
