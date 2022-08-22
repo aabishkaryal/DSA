@@ -20,8 +20,7 @@ func TestSingleNumber(t *testing.T) {
 		{name: "test1", args: args{nums: []int{2, 2, 1}}, want: 1},
 		{name: "test2", args: args{nums: []int{4, 1, 2, 1, 2}}, want: 4},
 		{name: "test3", args: args{nums: []int{1}}, want: 1},
-		{name: "test4", args: args{nums: []int{1, 1}}, want: -1},
-		{name: "test5", args: args{nums: []int{2, 2, 4, 6, 8, 4, 8, 3, 5, 6, 3, 9, 9}}, want: 5},
+		{name: "test4", args: args{nums: []int{2, 2, 4, 6, 8, 4, 8, 3, 5, 6, 3, 9, 9}}, want: 5},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
