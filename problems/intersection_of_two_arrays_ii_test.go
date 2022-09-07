@@ -1,10 +1,10 @@
 package problems_test
 
 import (
-	"reflect"
 	"testing"
 
 	"github.com/aabishkaryal/DSA/problems"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestIntersect(t *testing.T) {
@@ -24,7 +24,7 @@ func TestIntersect(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := problems.Intersect(tt.args.nums1, tt.args.nums2); !reflect.DeepEqual(got, tt.want) {
+			if got := problems.Intersect(tt.args.nums1, tt.args.nums2); !assert.ElementsMatch(t, got, tt.want) {
 				t.Errorf("Intersect() = %v, want %v", got, tt.want)
 			}
 		})
