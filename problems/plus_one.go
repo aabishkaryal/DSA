@@ -1,17 +1,13 @@
 package problems
 
 func PlusOne(digits []int) []int {
-	carry := 1
 	for i := len(digits) - 1; i >= 0; i-- {
-		plusOne := digits[i] + carry
-		carry = plusOne / 10
-		digits[i] = plusOne % 10
-		if carry == 0 {
-			break
+		if digits[i] != 9 {
+			digits[i]++
+			return digits
 		}
+		digits[i] = 0
 	}
-	if carry != 0 {
-		digits = append([]int{carry}, digits...)
-	}
+	digits = append([]int{1}, digits...)
 	return digits
 }
