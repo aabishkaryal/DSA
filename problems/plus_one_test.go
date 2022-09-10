@@ -8,7 +8,7 @@ import (
 	"github.com/aabishkaryal/DSA/problems"
 )
 
-func Test_plusOne(t *testing.T) {
+func TestPlusOne(t *testing.T) {
 	type args struct {
 		digits []int
 	}
