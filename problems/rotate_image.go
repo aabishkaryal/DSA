@@ -2,17 +2,15 @@ package problems
 
 func RotateImage(matrix [][]int) {
 	n := len(matrix)
-	temp := make([][]int, n)
-	for i := range matrix {
-		temp[i] = make([]int, n)
-		for j := range matrix[i] {
-			temp[i][j] = matrix[n-1-j][i]
-		}
-	}
-
-	for i := 0; i < n; i++ {
-		for j := 0; j < n; j++ {
-			matrix[i][j] = temp[i][j]
+	for i := 0; i < n/2; i++ {
+		var temp int
+		for j := i; j < n-i-1; j++ {
+			temp = matrix[i][j]
+			// Because i, j <- n-j-1, i.
+			matrix[i][j] = matrix[n-j-1][i]
+			matrix[n-j-1][i] = matrix[n-i-1][n-j-1]
+			matrix[n-i-1][n-j-1] = matrix[j][n-i-1]
+			matrix[j][n-i-1] = temp
 		}
 	}
 }
