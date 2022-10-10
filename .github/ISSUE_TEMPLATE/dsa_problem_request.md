@@ -8,7 +8,7 @@ assignees: aabishkaryal
 
 ### Link to DSA Problem
 
-Add any other context or screenshots about the feature request here.
+Provide a link to the problem in leetcode or other site.
 
 ### Problem Description
 
